@@ -6,6 +6,6 @@ import { UpdateBoardDto } from './dto/update-board.dto';
 export class BoardService {
   create(createBoardDto: CreateBoardDto) {
     return 'This action adds a new board';
-  }
-  
+  }//
+
 }
