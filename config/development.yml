@@ -4,7 +4,8 @@ db:
   password: '1234'
   type: 'postgres'
   port: 5432
-  database: 'todo-list'
+  database: 'todolist'
+  synchronize: true
 
 jwt:
   secret: 'Secret1234'

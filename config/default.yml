@@ -4,6 +4,6 @@ server:
 db:
   type: 'postgres'
   port: 5432
-  database: 'todo-list'
+  database: 'todolist'
 jwt:
   expriesIn: 3600
