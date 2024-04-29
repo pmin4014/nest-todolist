@@ -7,4 +7,29 @@ import { UpdateBoardDto } from './dto/update-board.dto';
 export class BoardController {
   constructor(private readonly boardService: BoardService) {}
 
+  @Get('/')
+  getAllBoard(){
+    return this.boardService.getAllBoard();
+  }
+
+  @Get('/:id')
+  getBoardById(@Param('id') id: number){
+    return this.boardService.getBoardById(id);
+  }
+
+  @Post()
+  createBoard(){
+    return this.boardService.createBoard();
+  }
+
+  @Patch('/:id')
+  updateBoard(@Param('id') id: number){
+    return this.boardService.updateBoard(id);
+  }
+
+  @Delete('/:id')
+  deleteBoard(@Param('id') id: number){
+    return this.boardService.deleteBoard(id);
+  }
+
 }
