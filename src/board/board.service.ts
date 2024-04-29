@@ -7,18 +7,19 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class BoardService {
   constructor(){}
   getAllBoard(){
-    return
+    return 'getAllBoard'
   }
   getBoardById(id: number){
-    return
+    return `getBoardById id: ${id}`
   }
-  createBoard(){
-    return
+  createBoard(createBoardDto: CreateBoardDto){
+    const {title, description} = createBoardDto;
+    return `title : ${title}, description: ${description}`
   }
   updateBoard(id: number){
-    return
+    return 'updateBoard'
   }
   deleteBoard(id: number){
-    return
+    return 'deleteBoard'
   }
 }

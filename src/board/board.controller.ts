@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
 import { BoardService } from './board.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
@@ -18,8 +18,9 @@ export class BoardController {
   }
 
   @Post()
-  createBoard(){
-    return this.boardService.createBoard();
+  @UsePipes(ValidationPipe)//dto에 IsNotEmpty 유효성 검사를 사용하기 위해
+  createBoard(@Body() createBoardDto: CreateBoardDto){
+    return this.boardService.createBoard(createBoardDto);
   }
 
   @Patch('/:id')
