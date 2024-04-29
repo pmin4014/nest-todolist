@@ -9,7 +9,7 @@ export class BoardController {
   constructor(private readonly boardService: BoardService) {}
 
   @Get('/')
-  getAllBoard(){
+  getAllBoard(): Promise<Board[]>{
     return this.boardService.getAllBoard();
   }
 
@@ -25,8 +25,8 @@ export class BoardController {
   }
 
   @Patch('/:id')
-  updateBoard(@Param('id') id: number){
-    return this.boardService.updateBoard(id);
+  updateBoard(@Param('id', ParseIntPipe) id, @Body() updateData: UpdateBoardDto): Promise<Board>{
+    return this.boardService.updateBoard(id, updateData);
   }
 
   @Delete('/:id')

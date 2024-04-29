@@ -11,8 +11,13 @@ export class BoardService {
     @InjectRepository(BoardRepository)
     private boardRepository: BoardRepository,
   ){}
-  getAllBoard(){
-    return 'getAllBoard'
+
+  async getAllBoard(): Promise<Board[]>{
+    const query = this.boardRepository.createQueryBuilder('board');
+
+    const boards = await query.getMany();
+
+    return boards;
   }
 
   async getBoardById(id: number): Promise<Board>{
@@ -27,9 +32,16 @@ export class BoardService {
   async createBoard(createBoardDto: CreateBoardDto): Promise<Board>{
     return this.boardRepository.createBoard(createBoardDto);
   }
-  updateBoard(id: number){
-    return 'updateBoard'
+
+  async updateBoard(id: number, updateData: UpdateBoardDto): Promise<Board>{
+    const board = await this.getBoardById(id);
+
+    const updatedBoard = await this.boardRepository.save({...board, ...updateData});
+
+    return updatedBoard;
+
   }
+
   async deleteBoard(id: number): Promise<void> {
     const result = await this.boardRepository.delete(id);
 
