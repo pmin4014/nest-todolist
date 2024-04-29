@@ -14,7 +14,7 @@ export class BoardService {
   getAllBoard(){
     return 'getAllBoard'
   }
-  
+
   async getBoardById(id: number): Promise<Board>{
     const found = await this.boardRepository.findOneBy({id});
 
@@ -24,9 +24,8 @@ export class BoardService {
     return found;
   }
 
-  createBoard(createBoardDto: CreateBoardDto){
-    const {title, description} = createBoardDto;
-    return `title : ${title}, description: ${description}`
+  async createBoard(createBoardDto: CreateBoardDto): Promise<Board>{
+    return this.boardRepository.createBoard(createBoardDto);
   }
   updateBoard(id: number){
     return 'updateBoard'

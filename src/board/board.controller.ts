@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, Validation
 import { BoardService } from './board.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
+import { Board } from './entities/board.entity';
 
 @Controller('board')
 export class BoardController {
@@ -13,13 +14,13 @@ export class BoardController {
   }
 
   @Get('/:id')
-  getBoardById(@Param('id') id: number){
+  getBoardById(@Param('id') id: number): Promise<Board>{
     return this.boardService.getBoardById(id);
   }
 
   @Post()
   @UsePipes(ValidationPipe)//dto에 IsNotEmpty 유효성 검사를 사용하기 위해
-  createBoard(@Body() createBoardDto: CreateBoardDto){
+  createBoard(@Body() createBoardDto: CreateBoardDto):Promise<Board>{
     return this.boardService.createBoard(createBoardDto);
   }
 
