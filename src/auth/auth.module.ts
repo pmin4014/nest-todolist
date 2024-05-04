@@ -9,7 +9,7 @@ import * as config from 'config'
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 
-const jwtConfig = config.get('jwt');
+const jwtConfig = config.get('jwt');//config
 
 @Module({
   imports: [
