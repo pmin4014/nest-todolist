@@ -6,4 +6,4 @@ db:
   port: 5432
   database: 'todolist'
 jwt:
-  expriesIn: 3600
+  expiresIn: 3600
