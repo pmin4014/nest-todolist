@@ -8,7 +8,7 @@ import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/auth/entities/user.entity';
 
 @Controller('board')
-@UseGuards(AuthGuard())
+//@UseGuards(AuthGuard())
 export class BoardController {
   constructor(private readonly boardService: BoardService) {}
 
