@@ -54,6 +54,8 @@ export class BoardService {
   }
 
   async deleteBoard(id: number, user: User): Promise<void> {
+    //const result = await this.boardRepository.delete({id});
+    //유저 정보가 없을 때 게시글 삭제가 안되기때문에 일시적으로 주석처리
     const result = await this.boardRepository.delete({id, user});
 
     if(result.affected === 0){
